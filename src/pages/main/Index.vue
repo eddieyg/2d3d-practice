@@ -28,6 +28,7 @@ const caseList = routes[0].children.filter(r => r.meta.showCase)
     margin: 0 auto;
     >li{
       font-size: 20px;
+      margin: 20px 0px;
     }
   }
 }

@@ -24,6 +24,15 @@ const routes: RouteRecordRaw[] = [
           showCase: true,
         },
       },
+      {
+        path: '/superlist-3d',
+        name: 'superlist-3d',
+        component: () => import('@/pages/superlist-3d/Index.vue'),
+        meta: {
+          title: 'superlist 3d',
+          showCase: true,
+        },
+      },
     ],
   },
 ]

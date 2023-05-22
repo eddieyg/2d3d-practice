@@ -38,7 +38,9 @@ function setup() {
     })
   })
 }
-onMounted(setup)
+onMounted(() => {
+  setup()
+})
 </script>
 
 <style lang="scss" scoped>

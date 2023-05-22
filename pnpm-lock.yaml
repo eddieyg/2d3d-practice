@@ -8,6 +8,7 @@ specifiers:
   '@vitejs/plugin-vue': ^4.0.0
   autoprefixer: ^10.4.13
   babylonjs: ^6.4.1
+  babylonjs-loaders: ^6.2.0
   eslint: ^8.35.0
   gsap: ^3.11.5
   husky: ^8.0.3
@@ -31,6 +32,7 @@ specifiers:
 
 dependencies:
   babylonjs: 6.4.1
+  babylonjs-loaders: 6.2.0
   gsap: 3.11.5
   lottie-web: 5.11.0
   pinia: 2.0.32_hmuptsblhheur2tugfgucj7gc4
@@ -1504,6 +1506,17 @@ packages:
     transitivePeerDependencies:
       - debug
     dev: true
+
+  /babylonjs-gltf2interface/6.4.1:
+    resolution: {integrity: sha512-8nSfItXdNkf59145022IiJIev6PZLQ9PhLf1KtkfkJf8hQkkAM0Ct6PO5fXZi8IXgxYBzrDJf0WmG6FUOdERzA==}
+    dev: false
+
+  /babylonjs-loaders/6.2.0:
+    resolution: {integrity: sha512-Efo8JlW2fZYiJWzHNg0dlG12VvjDzR2XwAD0AVqV0upfxiYTqpFPSB7FgodrNW2Xlng+y+m83ytTRnRKV4/mQQ==}
+    dependencies:
+      babylonjs: 6.4.1
+      babylonjs-gltf2interface: 6.4.1
+    dev: false
 
   /babylonjs/6.4.1:
     resolution: {integrity: sha512-dM5yURV15DgpzrocRGcBXhVMV0Mg3nrNS9UXMZZ7dbzXgne8LVukxtid3LAUTYK2mdNragoQY0U9KLA8NZKROQ==}

@@ -104,7 +104,7 @@ async function createProps() {
     red: new StandardMaterial('red', scene),
   }
   materials.default.diffuseColor = Color3.FromInts(48, 48, 48)
-  materials.black.diffuseColor = Color3.FromInts(0, 0, 0)
+  materials.black.diffuseColor = Color3.FromInts(22, 22, 22)
   materials.red.diffuseColor = Color3.FromInts(255, 80, 67)
 
   return {
@@ -275,14 +275,14 @@ function sceneAnimation(glProps: GLProps, meshes: Meshes) {
         followMouseTarget.pause()
       },
       onEnterBack: () => {
-        lights.right.intensity = 0.3
+        lights.right.intensity = 0.5
         meshes.book.meshes[1].material = materials.default
         followMouseTarget.play()
       },
     },
   }).to(meshes.book.meshes[1].scaling, {
-    x: 6,
-    y: 6,
+    x: 8,
+    y: 8,
     duration: 2,
   })
 

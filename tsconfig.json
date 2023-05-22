@@ -20,8 +20,8 @@
       "@comps/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],
       "@style/*": ["./src/style/*"],
-      "@util/*": ["./src/util/*"],
-    },
+      "@util/*": ["./src/util/*"]
+    }
   },
   "include": [
     "src/**/*.ts",
@@ -29,7 +29,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "vite-env.d.ts",
-    "tests/**/*.ts",
+    "tests/**/*.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

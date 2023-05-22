@@ -5,30 +5,87 @@
       <nav>
         <ul>
           <li v-for="nav in navList" :key="nav.name">
-            <router-link :to="{ name: nav.name }">
+            <router-link
+              v-if="nav.type === 'route'"
+              :to="{ name: nav.value }">
               {{ nav.name }}
             </router-link>
+            <a
+              v-else-if="nav.type === 'link'"
+              :href="nav.value"
+              target="_blank">
+              {{ nav.name }}
+            </a>
           </li>
         </ul>
       </nav>
     </header>
-    <main>
+
+    <main class="root-content">
       <router-view />
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref, watch } from 'vue'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
+import gsap from 'gsap'
 import packageInfo from '../../../package.json'
-import routes from '@/router/routes'
 
-const navList = routes[0].children
+const navList = [
+  {
+    name: 'Home',
+    value: 'main',
+    type: 'route',
+  },
+  {
+    name: 'Github',
+    value: 'https://github.com/eddieyg/2d3d-practice',
+    type: 'link',
+  },
+]
+
+const isOpenBar = ref(false)
+function openBar() {
+  if (isOpenBar.value)
+    return
+  gsap.to('.root-header', {
+    top: '32px',
+    duration: 0.5,
+    yoyo: true,
+  })
+  isOpenBar.value = true
+}
+function closeBar() {
+  if (!isOpenBar.value)
+    return
+  gsap.to('.root-header', {
+    top: '-70px',
+    duration: 0.5,
+    yoyo: true,
+  })
+  isOpenBar.value = false
+}
+
+const route = ref(useRoute())
+onBeforeRouteUpdate((to) => {
+  route.value = to
+})
+function checkBar() {
+  if (route.value.name === 'main')
+    openBar()
+  else
+    closeBar()
+}
+watch(() => route.value, checkBar)
+onMounted(() => {
+  checkBar()
+})
 </script>
 
 <style lang="scss" scoped>
 .root-layout {
-  width: 1200px;
-  padding-top: 100px;
   .root-header {
     width: 1200px;
     display: flex;
@@ -39,7 +96,7 @@ const navList = routes[0].children
     border-radius: $border-radius-m;
     background-color: #ffffff;
     position: fixed;
-    top: 32px;
+    top: -70px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 99;

@@ -12,15 +12,16 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/pages/main/Index.vue'),
         name: 'main',
         meta: {
-          title: 'main page title',
+          title: '2D3D Practice Case',
         },
       },
       {
-        path: '/example',
-        name: 'example',
-        component: () => import('@/pages/example/Index.vue'),
+        path: '/scroll-highlight',
+        name: 'scroll-highlight',
+        component: () => import('@/pages/scroll-highlight/Index.vue'),
         meta: {
-          title: 'example page title',
+          title: 'scroll text highlight',
+          showCase: true,
         },
       },
     ],

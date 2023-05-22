@@ -16,7 +16,12 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "babylonjs": "^6.4.1",
+    "gsap": "^3.11.5",
+    "lottie-web": "^5.11.0",
     "pinia": "^2.0.32",
+    "pixi.js": "^7.2.4",
+    "three": "^0.152.2",
     "vue": "^3.2.45",
     "vue-router": "4"
   },

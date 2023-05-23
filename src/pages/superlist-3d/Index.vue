@@ -16,13 +16,13 @@
           </h2>
           <div id="two-section-text">
             <p id="two-section-text1">
-              {{ 'Super charged productivity'.repeat(10) }}
+              {{ 'Super charged productivity'.repeat(20) }}
             </p>
             <p id="two-section-text2">
-              {{ 'Super charged productivity'.repeat(10) }}
+              {{ 'Super charged productivity'.repeat(20) }}
             </p>
             <p id="two-section-text3">
-              {{ 'Super charged productivity'.repeat(10) }}
+              {{ 'Super charged productivity'.repeat(20) }}
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ type Meshes = Awaited<ReturnType<typeof addMeshes>>
 
 const vars = {
   themeColor: Color4.FromInts(255, 80, 67, 255),
-  markers: false,
+  markers: true,
 }
 let followMouseTarget: ReturnType<typeof followMouse> = null
 
@@ -91,7 +91,7 @@ async function createProps() {
 
   const lights = {
     left: new HemisphericLight('left', new Vector3(30, 30, 0), scene),
-    right: new HemisphericLight('right', new Vector3(-2, 0, 6), scene),
+    right: new HemisphericLight('right', new Vector3(0, 0, 8), scene),
   }
   lights.left.intensity = 0.5
   lights.left.range = 100
@@ -163,7 +163,9 @@ async function addMeshes(glProps: GLProps) {
   manifesto1.meshes[0].scaling.x = 2.5
   manifesto1.meshes[0].scaling.y = 2.5
   manifesto1.meshes[0].scaling.z = 2.5
-  manifesto1.meshes[0].rotation.x = -30
+  manifesto1.meshes.forEach((m) => {
+    m.rotation.x = -60
+  })
   manifesto1.meshes[0].rotation.y = 225
   manifesto1.meshes[0].rotation.z = -30
   // manifesto2
@@ -174,6 +176,7 @@ async function addMeshes(glProps: GLProps) {
   manifesto2.meshes[0].scaling.x = 2.5
   manifesto2.meshes[0].scaling.y = 2.5
   manifesto2.meshes[0].scaling.z = 2.5
+  manifesto2.meshes[0].rotation.x -= 22
   manifesto2.meshes[0].position.x = 12
   manifesto2.meshes[0].position.y = 0
   manifesto2.meshes[0].position.z = 28
@@ -271,11 +274,11 @@ function sceneAnimation(glProps: GLProps, meshes: Meshes) {
       },
       onLeave: () => {
         meshes.book.meshes[1].material = materials.black
-        lights.right.intensity = 0.1
+        lights.right.intensity = 0.15
         followMouseTarget.pause()
       },
       onEnterBack: () => {
-        lights.right.intensity = 0.5
+        lights.right.intensity = 0.3
         meshes.book.meshes[1].material = materials.default
         followMouseTarget.play()
       },
@@ -290,7 +293,7 @@ function sceneAnimation(glProps: GLProps, meshes: Meshes) {
     scrollTrigger: {
       trigger: '#two-section-text1',
       start: 'top center',
-      end: 'top+=200 center',
+      end: 'top+=400 center',
       markers: vars.markers,
       toggleActions: 'restart none none reverse',
       scrub: true,
@@ -325,7 +328,7 @@ function sceneAnimation(glProps: GLProps, meshes: Meshes) {
     scrollTrigger: {
       trigger: '#two-section-text2',
       start: 'top center',
-      end: 'top+=200 center',
+      end: 'top+=500 center',
       markers: vars.markers,
       toggleActions: 'restart none none reverse',
       scrub: true,
@@ -357,8 +360,8 @@ function sceneAnimation(glProps: GLProps, meshes: Meshes) {
   gsap.timeline({
     scrollTrigger: {
       trigger: '#two-section-text3',
-      start: 'top-=100 center',
-      end: 'top+=100 center',
+      start: 'top center',
+      end: 'top+=250 center',
       markers: vars.markers,
       toggleActions: 'restart none none reverse',
       scrub: true,
@@ -436,7 +439,7 @@ function contentAnimation(glProps: GLProps) {
       scrub: true,
     },
   }).to('#rectangle', {
-    height: '50px',
+    height: '10px',
   })
 }
 
@@ -495,7 +498,7 @@ onUnmounted(() => {
 
     #section2{
       margin: 0 auto;
-      width: 1000px;
+      width: 1100px;
       #book-action{
         height: 30vh;
       }
@@ -508,7 +511,7 @@ onUnmounted(() => {
         font-size: 40px;
       }
       #two-section-text{
-        padding: 200px 100px 0px 100px;
+        padding: 400px 100px 0px 100px;
         text-align: left;
         flex: 1;
         color: #fff;

@@ -33,6 +33,15 @@ const routes: RouteRecordRaw[] = [
           showCase: true,
         },
       },
+      {
+        path: '/lottie-animation',
+        name: 'lottie-animation',
+        component: () => import('@/pages/lottie-animation/Index.vue'),
+        meta: {
+          title: 'lottie animation',
+          showCase: true,
+        },
+      },
     ],
   },
 ]

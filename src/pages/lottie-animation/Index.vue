@@ -28,19 +28,9 @@ function setup() {
     end: '+=80%',
     pin: true,
     // markers: true,
-  })
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: container,
-      start: 'top 25%',
-      end: '+=80%',
-      toggleActions: 'play reset play reset',
-      // markers: true,
-      scrub: true,
-      onUpdate: (scrollTrigger) => {
-        const frame = ~~(bloom.totalFrames * scrollTrigger.progress.valueOf())
-        bloom.goToAndStop(frame, true)
-      },
+    onUpdate: (scrollTrigger) => {
+      const frame = ~~(bloom.totalFrames * scrollTrigger.progress.valueOf())
+      bloom.goToAndStop(frame, true)
     },
   })
 }
@@ -54,9 +44,8 @@ onMounted(() => {
   padding: 50vh 0px;
   .lottie-container{
     margin: 0 auto;
-    width: 50vw;
-    height: 50vw;
+    width: 50vh;
+    height: 50vh;
   }
-
 }
 </style>

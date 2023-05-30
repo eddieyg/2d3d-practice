@@ -22,19 +22,20 @@ function setup() {
     autoplay: false,
     path: bloomUrl,
   })
-  gsap.to(container, {
-    scrollTrigger: {
-      trigger: container,
-      start: 'top 25%',
-      toggleClass: 'lottie-pin',
-      // markers: true,
-    },
+  ScrollTrigger.create({
+    trigger: container,
+    start: 'top 25%',
+    end: '+=80%',
+    pin: true,
+    // markers: true,
   })
   gsap.timeline({
     scrollTrigger: {
       trigger: container,
       start: 'top 25%',
+      end: '+=80%',
       toggleActions: 'play reset play reset',
+      // markers: true,
       scrub: true,
       onUpdate: (scrollTrigger) => {
         const frame = ~~(bloom.totalFrames * scrollTrigger.progress.valueOf())
@@ -50,16 +51,11 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .lottie-animation-page{
-  padding: 50vh 0px 100vh;
+  padding: 50vh 0px;
   .lottie-container{
     margin: 0 auto;
-    width: 50vh;
-    &.lottie-pin{
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
+    width: 50vw;
+    height: 50vw;
   }
 
 }

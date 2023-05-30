@@ -68,7 +68,7 @@ type Meshes = Awaited<ReturnType<typeof addMeshes>>
 
 const vars = {
   themeColor: Color4.FromInts(255, 80, 67, 255),
-  markers: true,
+  markers: false,
 }
 let followMouseTarget: ReturnType<typeof followMouse> = null
 
